@@ -1,5 +1,5 @@
 //
-//  NetworkBasic.swift
+//  UnsplashBasic.swift
 //  SeSAC3Week10
 //
 //  Created by Taekwon Lee on 2023/09/19.
@@ -8,9 +8,9 @@
 import Foundation
 import Alamofire
 
-final class NetworkBasic {
+final class UnsplashBasic {
 
-    static let shared = NetworkBasic()
+    static let shared = UnsplashBasic()
 
     private init() {}
 

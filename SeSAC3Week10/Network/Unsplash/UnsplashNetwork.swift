@@ -1,20 +1,19 @@
 //
-//  Network.swift
+//  UnsplashNetwork.swift
 //  SeSAC3Week10
 //
 //  Created by Taekwon Lee on 2023/09/19.
 //
-
 import Foundation
 import Alamofire
 
-final class Network {
+final class UnsplashNetwork {
     
-    static let shared = Network()
+    static let shared = UnsplashNetwork()
     
     private init() {}
     
-    func requestConvertible<T: Decodable>(type: T.Type, API: Router, completionHandler: @escaping (Result<T, NetworkError>) -> Void) {
+    func requestConvertible<T: Decodable>(type: T.Type, API: UnsplashRouter, completionHandler: @escaping (Result<T, NetworkError>) -> Void) {
         AF.request(API)
             .validate(statusCode: 200...299)
             .responseDecodable(of: T.self) { response in

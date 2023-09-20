@@ -10,7 +10,7 @@ import UIKit
 final class ImageDetailViewModel {
     
     func requestSearchPhotoRandomByConvertible(completionHandler: @escaping (URL) -> Void) {
-        Network.shared.requestConvertible(type: PhotoResult.self, API: .random) { response in
+        UnsplashNetwork.shared.requestConvertible(type: PhotoResult.self, API: .random) { response in
             switch response {
             case .success(let success):
                 completionHandler(URL(string: success.urls.thumb)!)
@@ -21,7 +21,7 @@ final class ImageDetailViewModel {
     }
     
     func searchPhotos(query: String) {
-        Network.shared.request(type: Photo.self, API: .search(query: query)) { response in
+        UnsplashNetwork.shared.request(type: Photo.self, API: .search(query: query)) { response in
             switch response {
             case .success(let success):
                 dump(success)
@@ -32,7 +32,7 @@ final class ImageDetailViewModel {
     }
     
     func getDetailPhoto(id: String) {
-        Network.shared.request(type: PhotoResult.self, API: .photo(id: "")) { response in
+        UnsplashNetwork.shared.request(type: PhotoResult.self, API: .photo(id: "")) { response in
             switch response {
             case .success(let success):
                 dump(success)
