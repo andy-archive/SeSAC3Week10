@@ -21,9 +21,11 @@
 		38814DEF2AB93D0D008D3884 /* NetworkBasic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38814DEE2AB93D0D008D3884 /* NetworkBasic.swift */; };
 		38814DF12AB94981008D3884 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38814DF02AB94981008D3884 /* NetworkError.swift */; };
 		38814DF52AB9746F008D3884 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38814DF42AB9746F008D3884 /* Network.swift */; };
-		38814DF82AB978AC008D3884 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38814DF72AB978AC008D3884 /* Router.swift */; };
 		38814DFA2AB97A13008D3884 /* UnsplashAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38814DF92AB97A13008D3884 /* UnsplashAPI.swift */; };
 		38814DFE2AB97C04008D3884 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38814DFD2AB97C04008D3884 /* APIKey.swift */; };
+		38814E002ABA772D008D3884 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38814DFF2ABA772D008D3884 /* Router.swift */; };
+		38814E032ABA9AC2008D3884 /* ImageDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38814E022ABA9AC2008D3884 /* ImageDetailViewModel.swift */; };
+		38814E052ABA9D57008D3884 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38814E042ABA9D57008D3884 /* Observable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,9 +42,11 @@
 		38814DEE2AB93D0D008D3884 /* NetworkBasic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkBasic.swift; sourceTree = "<group>"; };
 		38814DF02AB94981008D3884 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		38814DF42AB9746F008D3884 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		38814DF72AB978AC008D3884 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		38814DF92AB97A13008D3884 /* UnsplashAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashAPI.swift; sourceTree = "<group>"; };
 		38814DFD2AB97C04008D3884 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		38814DFF2ABA772D008D3884 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		38814E022ABA9AC2008D3884 /* ImageDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailViewModel.swift; sourceTree = "<group>"; };
+		38814E042ABA9D57008D3884 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,7 @@
 				38814DD92AB92959008D3884 /* Storyboard */,
 				38814DE42AB929BC008D3884 /* Utility */,
 				38814DD82AB92949008D3884 /* View */,
+				38814E012ABA9A93008D3884 /* ViewModel */,
 			);
 			path = SeSAC3Week10;
 			sourceTree = "<group>";
@@ -123,8 +128,8 @@
 				38814DF42AB9746F008D3884 /* Network.swift */,
 				38814DEE2AB93D0D008D3884 /* NetworkBasic.swift */,
 				38814DF02AB94981008D3884 /* NetworkError.swift */,
-				38814DF72AB978AC008D3884 /* Router.swift */,
 				38814DF92AB97A13008D3884 /* UnsplashAPI.swift */,
+				38814DFF2ABA772D008D3884 /* Router.swift */,
 				38814DFD2AB97C04008D3884 /* APIKey.swift */,
 			);
 			path = Network;
@@ -133,6 +138,7 @@
 		38814DE42AB929BC008D3884 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				38814E042ABA9D57008D3884 /* Observable.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -143,6 +149,14 @@
 				38814DEC2AB93844008D3884 /* PhotoModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		38814E012ABA9A93008D3884 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				38814E022ABA9AC2008D3884 /* ImageDetailViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,13 +243,15 @@
 			files = (
 				38814DC82AB9292E008D3884 /* ViewController.swift in Sources */,
 				38814DFA2AB97A13008D3884 /* UnsplashAPI.swift in Sources */,
+				38814E002ABA772D008D3884 /* Router.swift in Sources */,
 				38814DF12AB94981008D3884 /* NetworkError.swift in Sources */,
+				38814E052ABA9D57008D3884 /* Observable.swift in Sources */,
 				38814DF52AB9746F008D3884 /* Network.swift in Sources */,
 				38814DFE2AB97C04008D3884 /* APIKey.swift in Sources */,
 				38814DEF2AB93D0D008D3884 /* NetworkBasic.swift in Sources */,
-				38814DF82AB978AC008D3884 /* Router.swift in Sources */,
 				38814DC42AB9292E008D3884 /* AppDelegate.swift in Sources */,
 				38814DED2AB93844008D3884 /* PhotoModel.swift in Sources */,
+				38814E032ABA9AC2008D3884 /* ImageDetailViewModel.swift in Sources */,
 				38814DC62AB9292E008D3884 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

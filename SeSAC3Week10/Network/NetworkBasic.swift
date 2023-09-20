@@ -12,8 +12,6 @@ final class NetworkBasic {
 
     static let shared = NetworkBasic()
 
-    private let key = APIKey.accessKey
-
     private init() {}
 
     func searchPhotos(API: UnsplashAPI, query: String, completionHandler: @escaping (Result<Photo, Error>) -> Void) {

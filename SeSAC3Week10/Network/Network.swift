@@ -12,18 +12,31 @@ final class Network {
     
     static let shared = Network()
     
-    private let key = APIKey.accessKey
-    
     private init() {}
+    
+    func requestConvertible<T: Decodable>(type: T.Type, API: Router, completionHandler: @escaping (Result<T, NetworkError>) -> Void) {
+        AF.request(API)
+            .validate(statusCode: 200...299)
+            .responseDecodable(of: T.self) { response in
+                switch response.result {
+                case .success(let data):
+                    completionHandler(.success(data))
+                case .failure(_):
+                    let statusCode = response.response?.statusCode ?? 500
+                    guard let error = NetworkError(rawValue: statusCode) else { return }
+                    completionHandler(.failure(error))
+                }
+            }
+    }
     
     func request<T: Decodable>(type: T.Type, API: UnsplashAPI, completionHandler: @escaping (Result<T, NetworkError>) -> Void) {
         
         AF.request(API.endpoint, method: API.method, parameters: API.query, encoding: URLEncoding(destination: .queryString), headers: API.header)
             .validate(statusCode: 200...299)
-            .responseDecodable(of: Photo.self) { response in
+            .responseDecodable(of: T.self) { response in
                 switch response.result {
                 case .success(let data):
-                    completionHandler(.success(data as! T))
+                    completionHandler(.success(data))
                 case .failure(_):
                     let statusCode = response.response?.statusCode ?? 500
                     guard let error = NetworkError(rawValue: statusCode) else { return }
@@ -47,4 +60,5 @@ final class Network {
             }
         }
     }
+    
 }
