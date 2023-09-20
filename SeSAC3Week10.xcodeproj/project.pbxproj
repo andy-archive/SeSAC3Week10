@@ -23,11 +23,13 @@
 		38814E032ABA9AC2008D3884 /* ImageDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38814E022ABA9AC2008D3884 /* ImageDetailViewModel.swift */; };
 		38814E052ABA9D57008D3884 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38814E042ABA9D57008D3884 /* Observable.swift */; };
 		38814E072ABB44A5008D3884 /* BeerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38814E062ABB44A5008D3884 /* BeerListViewController.swift */; };
-		38814E0B2ABB45E2008D3884 /* PunkNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38814E0A2ABB45E2008D3884 /* PunkNetwork.swift */; };
+		38814E0B2ABB45E2008D3884 /* PunkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38814E0A2ABB45E2008D3884 /* PunkAPI.swift */; };
 		38814E112ABB4C19008D3884 /* UnsplashNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38814E102ABB4C19008D3884 /* UnsplashNetwork.swift */; };
 		38814E132ABB4CC2008D3884 /* UnsplashAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38814E122ABB4CC2008D3884 /* UnsplashAPI.swift */; };
 		38814E152ABB4D51008D3884 /* UnsplashRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38814E142ABB4D51008D3884 /* UnsplashRouter.swift */; };
 		38814E172ABB4D9E008D3884 /* UnsplashBasic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38814E162ABB4D9E008D3884 /* UnsplashBasic.swift */; };
+		38814E192ABB5BAA008D3884 /* PunkNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38814E182ABB5BAA008D3884 /* PunkNetwork.swift */; };
+		38814E1B2ABB6060008D3884 /* PunkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38814E1A2ABB6060008D3884 /* PunkModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,11 +48,13 @@
 		38814E022ABA9AC2008D3884 /* ImageDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailViewModel.swift; sourceTree = "<group>"; };
 		38814E042ABA9D57008D3884 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		38814E062ABB44A5008D3884 /* BeerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerListViewController.swift; sourceTree = "<group>"; };
-		38814E0A2ABB45E2008D3884 /* PunkNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PunkNetwork.swift; sourceTree = "<group>"; };
+		38814E0A2ABB45E2008D3884 /* PunkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PunkAPI.swift; sourceTree = "<group>"; };
 		38814E102ABB4C19008D3884 /* UnsplashNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashNetwork.swift; sourceTree = "<group>"; };
 		38814E122ABB4CC2008D3884 /* UnsplashAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashAPI.swift; sourceTree = "<group>"; };
 		38814E142ABB4D51008D3884 /* UnsplashRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashRouter.swift; sourceTree = "<group>"; };
 		38814E162ABB4D9E008D3884 /* UnsplashBasic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashBasic.swift; sourceTree = "<group>"; };
+		38814E182ABB5BAA008D3884 /* PunkNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PunkNetwork.swift; sourceTree = "<group>"; };
+		38814E1A2ABB6060008D3884 /* PunkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PunkModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				38814DEC2AB93844008D3884 /* PhotoModel.swift */,
+				38814E1A2ABB6060008D3884 /* PunkModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -165,7 +170,8 @@
 		38814E092ABB4540008D3884 /* Punk */ = {
 			isa = PBXGroup;
 			children = (
-				38814E0A2ABB45E2008D3884 /* PunkNetwork.swift */,
+				38814E0A2ABB45E2008D3884 /* PunkAPI.swift */,
+				38814E182ABB5BAA008D3884 /* PunkNetwork.swift */,
 			);
 			path = Punk;
 			sourceTree = "<group>";
@@ -263,14 +269,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38814E192ABB5BAA008D3884 /* PunkNetwork.swift in Sources */,
 				38814E172ABB4D9E008D3884 /* UnsplashBasic.swift in Sources */,
-				38814E0B2ABB45E2008D3884 /* PunkNetwork.swift in Sources */,
+				38814E0B2ABB45E2008D3884 /* PunkAPI.swift in Sources */,
 				38814DC82AB9292E008D3884 /* ViewController.swift in Sources */,
 				38814E132ABB4CC2008D3884 /* UnsplashAPI.swift in Sources */,
 				38814DF12AB94981008D3884 /* NetworkError.swift in Sources */,
 				38814E052ABA9D57008D3884 /* Observable.swift in Sources */,
 				38814DFE2AB97C04008D3884 /* APIKey.swift in Sources */,
 				38814E152ABB4D51008D3884 /* UnsplashRouter.swift in Sources */,
+				38814E1B2ABB6060008D3884 /* PunkModel.swift in Sources */,
 				38814E072ABB44A5008D3884 /* BeerListViewController.swift in Sources */,
 				38814DC42AB9292E008D3884 /* AppDelegate.swift in Sources */,
 				38814DED2AB93844008D3884 /* PhotoModel.swift in Sources */,

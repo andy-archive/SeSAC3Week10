@@ -8,37 +8,25 @@
 import Foundation
 import Alamofire
 
-enum PunkAPI {
+final class PunkNetwork {
     
-    case beers(query: String)
-    case singleBeer(id: String)
-    case randomBeer
+    static let shared = PunkNetwork()
     
-    private var baseURL: String {
-        return "https://api.punkapi.com/v2/"
-    }
+    private init() {}
     
-    var endpoint: URL {
-        switch self {
-        case .beers:
-            return URL(string: baseURL + "beers/")!
-        case .singleBeer(let id):
-            return URL(string: baseURL + "\(id)")!
-        case .randomBeer:
-            return URL(string: baseURL + "")!
-        }
-    }
-    
-    var method: HTTPMethod {
-        return .get
-    }
-    
-    var query: [String: String] {
-        switch self {
-        case .beers(let query):
-            return ["query": query]
-        case .singleBeer, .randomBeer:
-            return ["": ""]
-        }
+    func requestRandomBeer<T: Decodable>(type: T.Type, API: PunkAPI, completionHandler: @escaping (Result<T, NetworkError>) -> Void) {
+        AF.request(API)
+            .validate(statusCode: 200...299)
+            .responseDecodable(of: T.self) { response in
+                switch response.result {
+                case .success(let data):
+                    completionHandler(.success(data))
+                case .failure(_):
+                    let statusCode = response.response?.statusCode ?? 500
+                    guard let error = NetworkError(rawValue: statusCode) else { return }
+                    completionHandler(.failure(error))
+                }
+            }
     }
 }
+

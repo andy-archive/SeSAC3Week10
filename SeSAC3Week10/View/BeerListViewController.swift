@@ -13,6 +13,19 @@ final class BeerListViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        
+        requestRandomBeerConvertible()
+    }
+    
+    private func requestRandomBeerConvertible() {
+        PunkNetwork.shared.requestRandomBeer(type: Punks.self, API: .randomBeer) { response in
+            switch response {
+            case .success(let success):
+                dump(success)
+            case .failure(let failure):
+                print(failure.errorDescription)
+            }
+        }
     }
     
 }
