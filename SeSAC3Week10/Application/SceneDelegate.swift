@@ -16,23 +16,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         
-        let firstNav = UINavigationController(rootViewController: ViewController())
+        let firstNav = UINavigationController(rootViewController: SearchViewController())
         let secondNav = UINavigationController(rootViewController: BeerListViewController())
+        let thirdNav = UINavigationController(rootViewController: PhotoViewController())
         
         let tabBarController = UITabBarController()
-        tabBarController.tabBar.tintColor = .white
-        tabBarController.tabBar.unselectedItemTintColor = .systemGray4
-        tabBarController.tabBar.backgroundColor = .gray
-        tabBarController.setViewControllers([firstNav, secondNav], animated: true)
+        tabBarController.tabBar.tintColor = .black
+        tabBarController.tabBar.unselectedItemTintColor = .gray
+        tabBarController.tabBar.backgroundColor = .systemGray4
+        tabBarController.setViewControllers([firstNav, secondNav, thirdNav], animated: true)
         
         if let items = tabBarController.tabBar.items {
-            items[0].image = UIImage(systemName: "photo.stack")
-            items[0].selectedImage = UIImage(systemName: "photo.stack.fill")
-            items[0].title = "Movie"
+            items[0].image = UIImage(systemName: "magnifyingglass")
+            items[0].selectedImage = UIImage(systemName: "plus.magnifyingglass")
+            items[0].title = "Search"
             
-            items[1].image = UIImage(systemName: "mug")
-            items[1].selectedImage = UIImage(systemName: "mug.fill")
+            items[1].image = UIImage(systemName: "photo.stack")
+            items[1].selectedImage = UIImage(systemName: "photo.stack.fill")
             items[1].title = "Photo"
+            
+            items[2].image = UIImage(systemName: "mug")
+            items[2].selectedImage = UIImage(systemName: "mug.fill")
+            items[2].title = "Beer"
+            
         }
         
         window?.rootViewController = tabBarController
