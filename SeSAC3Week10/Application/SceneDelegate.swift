@@ -17,8 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
         let firstNav = UINavigationController(rootViewController: SearchViewController())
-        let secondNav = UINavigationController(rootViewController: BeerListViewController())
-        let thirdNav = UINavigationController(rootViewController: PhotoViewController())
+        let secondNav = UINavigationController(rootViewController: PhotoViewController())
+        let thirdNav = UINavigationController(rootViewController: BeerListViewController())
         
         let tabBarController = UITabBarController()
         tabBarController.tabBar.tintColor = .black
