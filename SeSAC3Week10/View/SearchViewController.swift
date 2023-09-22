@@ -70,21 +70,38 @@ final class SearchViewController: UIViewController {
     }
 
     private func configureCollectionViewLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewFlowLayout()
-        let numberOfItem: CGFloat = 4
-        let sectionSpacing: CGFloat = 8
-        let itemSpacing: CGFloat = 12
         
-        layout.minimumLineSpacing = itemSpacing
-        layout.minimumInteritemSpacing = itemSpacing
-        layout.sectionInset = UIEdgeInsets(top: 0, left: sectionSpacing, bottom: 0, right: sectionSpacing)
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/3), heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let size = UIScreen.main.bounds.width - sectionSpacing * 2 - itemSpacing * (numberOfItem - 1)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(80))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 3)
+        group.interItemSpacing = .fixed(10)
         
-        layout.itemSize = CGSize(width: size / numberOfItem, height: size / numberOfItem)
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12)
         
+        let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
+    
+    //UICollectionViewLayout
+//    private func configureCollectionViewLayout() -> UICollectionViewLayout {
+//        let layout = UICollectionViewFlowLayout()
+//        let numberOfItem: CGFloat = 4
+//        let sectionSpacing: CGFloat = 8
+//        let itemSpacing: CGFloat = 12
+//
+//        layout.minimumLineSpacing = itemSpacing
+//        layout.minimumInteritemSpacing = itemSpacing
+//        layout.sectionInset = UIEdgeInsets(top: 0, left: sectionSpacing, bottom: 0, right: sectionSpacing)
+//
+//        let size = UIScreen.main.bounds.width - sectionSpacing * 2 - itemSpacing * (numberOfItem - 1)
+//
+//        layout.itemSize = CGSize(width: size / numberOfItem, height: size / numberOfItem)
+//
+//        return layout
+//    }
 }
 
 //MARK: UIScrollViewDelegate
@@ -102,11 +119,6 @@ extension SearchViewController: UIScrollViewDelegate {
         }
     }
 }
-
-
-
-
-
 
 /*
  
