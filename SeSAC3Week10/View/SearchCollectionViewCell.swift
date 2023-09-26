@@ -36,15 +36,17 @@ final class SearchCollectionViewCell: UICollectionViewCell {
     
     func configureLayout() {
         imageView.snp.makeConstraints { make in
-            make.top.equalTo(contentView.snp.top)
-            make.centerX.equalToSuperview()
-            make.size.equalTo(contentView).multipliedBy(0.6)
+            make.size.equalToSuperview()
+//            make.top.equalTo(contentView.snp.top)
+//            make.centerX.equalToSuperview()
+//            make.size.equalTo(contentView).multipliedBy(0.6)
         }
         
         label.snp.makeConstraints { make in
-            make.top.greaterThanOrEqualTo(imageView.snp.bottom).offset(4)
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.size.equalToSuperview()
+//            make.top.greaterThanOrEqualTo(imageView.snp.bottom).offset(4)
+//            make.centerX.equalToSuperview()
+//            make.bottom.equalToSuperview()
         }
     }
 }

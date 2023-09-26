@@ -30,6 +30,7 @@
 		38814E172ABB4D9E008D3884 /* UnsplashBasic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38814E162ABB4D9E008D3884 /* UnsplashBasic.swift */; };
 		38814E192ABB5BAA008D3884 /* PunkNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38814E182ABB5BAA008D3884 /* PunkNetwork.swift */; };
 		38814E1B2ABB6060008D3884 /* PunkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38814E1A2ABB6060008D3884 /* PunkModel.swift */; };
+		388C90002AC271290072C3F1 /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388C8FFF2AC271290072C3F1 /* Sample.swift */; };
 		3895C7E82ABBCB3B00458ED1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3895C7E72ABBCB3B00458ED1 /* SearchViewController.swift */; };
 		3895C7EA2ABBE10900458ED1 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3895C7E92ABBE10900458ED1 /* SearchCollectionViewCell.swift */; };
 		3895C7EC2ABC58F700458ED1 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3895C7EB2ABC58F700458ED1 /* PhotoViewController.swift */; };
@@ -58,6 +59,7 @@
 		38814E162ABB4D9E008D3884 /* UnsplashBasic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashBasic.swift; sourceTree = "<group>"; };
 		38814E182ABB5BAA008D3884 /* PunkNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PunkNetwork.swift; sourceTree = "<group>"; };
 		38814E1A2ABB6060008D3884 /* PunkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PunkModel.swift; sourceTree = "<group>"; };
+		388C8FFF2AC271290072C3F1 /* Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
 		3895C7E72ABBCB3B00458ED1 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3895C7E92ABBE10900458ED1 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		3895C7EB2ABC58F700458ED1 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				3895C7E92ABBE10900458ED1 /* SearchCollectionViewCell.swift */,
 				38814DC72AB9292E008D3884 /* ViewController.swift */,
 				3895C7EB2ABC58F700458ED1 /* PhotoViewController.swift */,
+				388C8FFF2AC271290072C3F1 /* Sample.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				38814E0B2ABB45E2008D3884 /* PunkAPI.swift in Sources */,
 				3895C7E82ABBCB3B00458ED1 /* SearchViewController.swift in Sources */,
 				38814DC82AB9292E008D3884 /* ViewController.swift in Sources */,
+				388C90002AC271290072C3F1 /* Sample.swift in Sources */,
 				38814E132ABB4CC2008D3884 /* UnsplashAPI.swift in Sources */,
 				38814DF12AB94981008D3884 /* NetworkError.swift in Sources */,
 				38814E052ABA9D57008D3884 /* Observable.swift in Sources */,

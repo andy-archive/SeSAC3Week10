@@ -7,13 +7,14 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
-final class SearchViewController: UIViewController {
+final class SearchViewController: UIViewController, UISearchBarDelegate {
 
-    private var list = Array(0...100)
+    private var list = ["andy", "saboo", "UICollectionViewDiffableDataSource", "joey", "roen", "noah", "UICollectionViewCompositionalLayoutConfiguration"]
     
-    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
-    private var dataSource: UICollectionViewDiffableDataSource<Int, Int>!
+    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureTagLayout())
+    private var dataSource: UICollectionViewDiffableDataSource<Int, PhotoResult>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,14 +25,45 @@ final class SearchViewController: UIViewController {
         configureHierarchy()
         configureUI()
         configureLayout()
+        
+        let bar = UISearchBar()
+        bar.delegate = self
+        navigationItem.titleView = bar
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        UnsplashNetwork.shared.requestConvertible(type: Photo.self, API: .search(query: searchBar.text!)) { response in
+            switch response {
+            case .success(let success): // 데이터의 반영 & 스냅샷의 처리
+                // load data + snapshot UI
+                
+                let ratios = success.results.map { Ratio(ratio: $0.width / $0.height) }
+                
+                let layout = PinterestLayout(columnsCount: 2, itemRatios: ratios, spacing: 10, contentWidth: self.view.frame.width)
+                
+                self.collectionView.collectionViewLayout = UICollectionViewCompositionalLayout(section: layout.section)
+                self.configureSnapshot(success)
+
+//                dump(success)
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
+    }
+    
+    func configureSnapshot(_ item: Photo) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, PhotoResult>()
+        snapshot.appendSections([0])
+        snapshot.appendItems(item.results)
+        dataSource.apply(snapshot)
     }
     
     func configureDataSource() {
         
         //1. CellRegistration
-        let cellRegistration = UICollectionView.CellRegistration<SearchCollectionViewCell, Int> { cell, indexPath, itemIdentifier in
-            cell.imageView.image = UIImage(systemName: "eraser")
-            cell.label.text = "\(itemIdentifier) 번"
+        let cellRegistration = UICollectionView.CellRegistration<SearchCollectionViewCell, PhotoResult> { cell, indexPath, itemIdentifier in
+            cell.imageView.kf.setImage(with: URL(string: itemIdentifier.urls.thumb)!)
+            cell.label.text = "\(itemIdentifier.created_at)"
         }
         
         //2. UICollectionViewDiffableDataSource
@@ -39,14 +71,6 @@ final class SearchViewController: UIViewController {
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             return cell
         })
-        
-        //3. NSDiffableDataSourceSnapshot
-        var snapshot = NSDiffableDataSourceSnapshot<Int, Int>()
-        snapshot.appendSections([0])
-        snapshot.appendItems(list)
-        
-        //4. apply snapshot to datasource
-        dataSource.apply(snapshot)
     }
 
     private func configureDelegate() {
@@ -68,22 +92,51 @@ final class SearchViewController: UIViewController {
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
-
-    private func configureCollectionViewLayout() -> UICollectionViewLayout {
+    
+    private func configurePinterestLayout() -> UICollectionViewLayout {
         
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/3), heightDimension: .fractionalHeight(1.0))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(80), heightDimension: .estimated(150))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(80))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 3)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(80), heightDimension: .estimated(150))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 2)
         group.interItemSpacing = .fixed(10)
         
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        section.interGroupSpacing = 10
+        
+        let configuration = UICollectionViewCompositionalLayoutConfiguration()
+        configuration.scrollDirection = .vertical
         
         let layout = UICollectionViewCompositionalLayout(section: section)
+        layout.configuration = configuration
+        
         return layout
     }
+    
+    private func configureTagLayout() -> UICollectionViewLayout {
+        
+        let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(80), heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(80), heightDimension: .absolute(30))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.interItemSpacing = .fixed(30)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        section.interGroupSpacing = 10
+        
+        let configuration = UICollectionViewCompositionalLayoutConfiguration()
+        configuration.scrollDirection = .vertical
+        
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        layout.configuration = configuration
+        
+        return layout
+    }
+
     
     //UICollectionViewLayout
 //    private func configureCollectionViewLayout() -> UICollectionViewLayout {
